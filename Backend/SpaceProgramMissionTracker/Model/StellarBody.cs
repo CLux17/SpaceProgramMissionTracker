@@ -10,8 +10,6 @@ namespace SpaceProgramMissionTracker.Model
         public int StellarBodyId { get; set; }
         public string Name { get; set; }
 
-        public int AgencyId { get; set; }
-
-        public virtual List<Mission> Missions { get; set; }
+        public virtual List<AgencyStellarBody> AgencyStellarBodyList { get; set; }
     }
 }

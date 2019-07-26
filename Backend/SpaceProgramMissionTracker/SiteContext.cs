@@ -12,6 +12,7 @@ namespace SpaceProgramMissionTracker
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<StellarBody> StellarBodies { get; set; }
         public DbSet<Mission> Missions { get; set; }
+        public DbSet<AgencyStellarBody> AgencyStellarBodies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -47,31 +48,57 @@ namespace SpaceProgramMissionTracker
                     Name = "SpaceX",
                 }
                 );
+            modelBuilder.Entity<AgencyStellarBody>().HasData(
+                new AgencyStellarBody()
+                {
+                    AgencyStellarBodyId = 1,
+                    AgencyId = 1,
+                    StellarBodyId = 1
+                },
+                new AgencyStellarBody()
+                {
+                    AgencyStellarBodyId = 2,
+                    AgencyId = 2,
+                    StellarBodyId = 2
+                },
+                new AgencyStellarBody()
+                {
+                    AgencyStellarBodyId = 3,
+                    AgencyId = 3,
+                    StellarBodyId = 3
+                },
+                new AgencyStellarBody()
+                {
+                    AgencyStellarBodyId = 4,
+                    AgencyId = 4,
+                    StellarBodyId = 4
+                }
+                );
 
             modelBuilder.Entity<StellarBody>().HasData(
                 new StellarBody()
                 {
                     StellarBodyId = 1,
                     Name = "Moon",
-                    AgencyId = 1
+                    
                 },
                 new StellarBody()
                 {
                     StellarBodyId = 2,
                     Name = "Venus",
-                    AgencyId = 2
+                    
                 },
                 new StellarBody()
                 {
                     StellarBodyId = 3,
                     Name = "Comet",
-                    AgencyId = 3
+                    
                 },
                 new StellarBody()
                 {
                     StellarBodyId = 4,
                     Name = "LEO",
-                    AgencyId = 4
+                    
                 }
                 );
 
@@ -80,25 +107,25 @@ namespace SpaceProgramMissionTracker
                 {
                     MissionId = 1,
                     Name = "Apollo",
-                    StellarBodyId = 1
+                    AgencyId = 1
                 },
                 new Mission()
                 {
                     MissionId = 2,
                     Name = "Venera",
-                    StellarBodyId = 2
+                    AgencyId = 2
                 },
                 new Mission()
                 {
                     MissionId = 3,
                     Name = "Philae",
-                    StellarBodyId = 3
+                    AgencyId = 3
                 },
                 new Mission()
                 {
                     MissionId = 4,
                     Name = "ISS Resupply",
-                    StellarBodyId = 4
+                    AgencyId = 4
                 }
                 );
 
