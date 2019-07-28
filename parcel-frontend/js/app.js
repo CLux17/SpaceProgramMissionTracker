@@ -76,30 +76,30 @@ function stellarBodies(){
 }
 
     
-function stellarBodyModal(){
-    document.getElementById('root').addEventListener('click', function() {
-        if(event.target.classList.contains('add-stellarBody-modal')){
-            const modal = document.getElementById('boxbg')
-            const modalbox = document.getElementById('box')
+// function stellarBodyModal(){
+//     document.getElementById('root').addEventListener('click', function() {
+//         if(event.target.classList.contains('add-stellarBody-modal')){
+//             const modal = document.getElementById('boxbg')
+//             const modalbox = document.getElementById('box')
 
-            modalbox.innerHTML = AddStellarBodyModal()
-            modal.style.display = 'block'
-        };
-    })
+//             modalbox.innerHTML = AddStellarBodyModal()
+//             modal.style.display = 'block'
+//         };
+//     })
 
-    document.getElementById('root').addEventListener('click', function(){
-        if(event.target.classList.contains('add-stellarBody_submit')){
-            const newBody = event.target.parentElement.querySelector('.add-stellarBody_name').value;
-            const data = {
-                id: 0,
-                name: newBody
-            };
+//     document.getElementById('root').addEventListener('click', function(){
+//         if(event.target.classList.contains('add-stellarBody_submit')){
+//             const newBody = event.target.parentElement.querySelector('.add-stellarBody_name').value;
+//             const data = {
+//                 id: 0,
+//                 name: newBody
+//             };
 
-            apiActions.postRequest('https://localhost:44388/api/stellarbody',
-            data,
-            stellar => {
-                document.querySelector('#root').innerHTML = AddStellarBodyModal(stellar);
-            })
-        }
-    });
-}
+//             apiActions.postRequest('https://localhost:44388/api/stellarbody',
+//             data,
+//             stellar => {
+//                 document.querySelector('#root').innerHTML = StellarBodies(stellar);
+//             })
+//         }
+//     });
+// }
