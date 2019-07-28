@@ -1,6 +1,6 @@
 export default function StellarBodies(stellarBodies){
     return`
-    <ul id="stellarbody-list">
+    <ul class='list' id="stellarbody-list">
     ${stellarBodies.map(stellarBody => {
             return`
             <li>

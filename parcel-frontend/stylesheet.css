@@ -62,6 +62,48 @@ nav ul{
     width: 35%;
 }
 
+.stellar_img:hover, .mission_img:hover{
+    transform: scale(.9);
+    box-shadow: 5px 5px 15px rgb(76, 41, 122);
+    opacity: 1;
+}
+
+.single{
+    box-shadow: none;
+    transform: none;
+}
+
+.multibutton{
+    background-color: rgb(76, 41, 122);
+    color: white;
+    padding: .6em;
+    opacity: none;
+}
+
+.multibutton:hover{
+    opacity: 1;
+}
+
+.list li{
+    padding: .75em;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+h2{
+    text-decoration: none;
+    text-shadow: aliceblue;
+    text-size-adjust: 25px;
+}
+
+h2, img, h4{
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
 footer{
     position: fixed;
     bottom: 0px;

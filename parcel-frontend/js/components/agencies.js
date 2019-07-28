@@ -1,9 +1,9 @@
 export default function Agencies(agencies){
     return`
-    <ul id="stellarbody-list">
+    <ul class='list' id="stellarbody-list">
     ${agencies.map(agency => {
             return`
-            <li>
+            <li class="topGroup">
                 <h2>${agency.name}</h2>
                 <img class='stellar_img' src='${agency.imageURL}' alt='${agency.name} image'/>
                 <h4>${agency.description}</h4>

@@ -2,19 +2,19 @@ import StellarBodies from "./stellarBodies";
 
 export default function SingleStellarBody(stellarBody){
     return `
-    <img src='${stellarBody.imageURL}' alt='${stellarBody.name} image'></img>
+    <img class='stellar_img single' src='${stellarBody.imageURL}' alt='${stellarBody.name} image'></img>
     
     <div id='name-info'><h3>${stellarBody.name}</h3>
     <div id='button-box'>
-        <button class='edit-stellarBody'>Edit Stellar Body</button>
-        <button class='delete-stellarBody'>Delete Stellar Body</button>
+        <button class='edit-stellarBody multibutton'>Edit Stellar Body</button>
+        <button class='delete-stellarBody multibutton'>Delete Stellar Body</button>
             <section class='edit-box'>
                 <input class='stellarBody_id' type='hidden' value='${stellarBody.stellarBodyId}'>
                 <input class='stellarBody_name' type='text' value='${stellarBody.name}'>
                 <input class='stellarBody_classification' type='text' value='${stellarBody.classification}'>
                 <textarea class='stellarBody_description'>${stellarBody.description}</textarea>
                 <input class='stellarBody_imageUrl' type='text' value='${stellarBody.imageURL}'>
-                <button class='edit-stellarBody_submit'>Submit</button>
+                <button class='edit-stellarBody_submit multibutton'>Submit</button>
             </section>
     </div>
     <p>${stellarBody.description}</p>
@@ -22,7 +22,7 @@ export default function SingleStellarBody(stellarBody){
     <div id='main-children'>
     <h3>Missions</h3>
 
-    <button class='add-mission-modal'>Add mission</button>
+    <button class='add-mission-modal multibutton'>Add mission</button>
     <ul id='mission-list'>
         ${stellarBody.missions.map(mission => {
             return `

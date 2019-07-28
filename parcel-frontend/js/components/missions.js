@@ -1,6 +1,6 @@
 export default function Missions(missions){
     return`
-    <ul id="mission-list">
+    <ul class='list' id="mission-list">
     ${missions.map(mission => {
             return`
             <li>
