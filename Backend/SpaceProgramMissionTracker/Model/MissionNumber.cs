@@ -8,7 +8,8 @@ namespace SpaceProgramMissionTracker.Model
     public class MissionNumber
     {
         public int MissionNumberId { get; set; }
-        public string MissionIterationName { get; set; }
+        public string MissionIterationNumber { get; set; }
+        public string Description { get; set; }
 
         public virtual int MissionId { get; set; }
     }
