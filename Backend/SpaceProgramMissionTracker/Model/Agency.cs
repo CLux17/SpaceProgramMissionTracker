@@ -9,6 +9,8 @@ namespace SpaceProgramMissionTracker.Model
     {
         public int AgencyId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public string ImageURL { get; set; }
 
         public virtual List<Mission> Missions { get; set; }
     }
