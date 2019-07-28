@@ -6,6 +6,7 @@ export default function StellarBodies(stellarBodies){
             <li>
                 <h2>${stellarBody.name}</h2>
                 <img class='stellar_img' src='${stellarBody.imageURL}' alt='${stellarBody.name} image'/>
+                <input class='stellar-body_id' type='hidden' value='${stellarBody.stellarBodyId}'>
                 <h4>${stellarBody.classification}</h4>
                 <h4>${stellarBody.description}</h4>
             </li>`

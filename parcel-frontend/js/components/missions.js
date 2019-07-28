@@ -17,7 +17,7 @@ export default function Missions(missions){
                 <input class='add-mission_descrip' type='text' placeholder='Add Description...'>
                 <div>
                 <select id="select">
-                <option value="${missions.agencyId}">int</option>
+                <option value="${missions[0].agencyId}">name</option>
             </select> </div>       
                 <button class="add-mission_submit multibutton">Add Mission</button>
         

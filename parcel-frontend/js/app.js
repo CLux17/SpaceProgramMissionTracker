@@ -20,9 +20,9 @@ function pageBuild(){
     stellarBodies();
     agencies();
     // singleMission();
-    // singleStellarBody();
+    singleStellarBody();
     // singleAgency();
-    stellarBodyModal();
+    //stellarBodyModal();
     myFunction();
 }
 
@@ -65,6 +65,17 @@ function stellarBodies(){
             })
         }
     });
+        
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('stellar_img')){
+            const stellarBodyId = event.target.parentElement.querySelector('.stellar-body_id').value
+            console.log(stellarBodyId)
+            apiActions.getRequest('https://localhost:44388/api/stellarbody/' + stellarBodyId, 
+            stellarBody => {
+                document.querySelector('#root').innerHTML = SingleStellarBody(stellarBody)
+            })
+        }
+    })
 }
 
 // function myFunction() {
@@ -142,6 +153,21 @@ function agencies(){
         }
     });
 }
+
+function singleStellarBody(){
+
+    // document.getElementById('root').addEventListener('click', function(){
+    //     if (event.target.classList.contains('stellar-body_name')){
+    //         const stellarBodyId = event.target.parentElement.querySelector('.stellar-body_id').value
+    //         console.log(stellarBodyId)
+    //         apiActions.getRequest('https://localhost:44388/api/stellarbody/'+ stellarBodyId, 
+    //         stellarBody =>{
+    //             document.querySelector('#root').innerHTML = SingleStellarBody(stellarBody)
+    //         })
+    //     }
+    // })
+}
+
 
 
     
