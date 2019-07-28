@@ -1,29 +1,57 @@
+import apiActions from './api/api-action';
 import Home from './components/home';
+
 import Missions from './components/missions';
+//import StellarBodies from './components/stellarBodies';
+// import Agencies from './components/agencies';
+
+// import SingleMission from './components/singleMission';
+// import SingleStellarBody from './components/singleStellarBody';
+// import SingleAgency from './components/singleAgency';
 
 
 pageBuild();
 
 function pageBuild(){
     home();
-    mission();
+    missions();
+    //stellarBodies();
+    // agencies();
+    // singleMission();
+    // singleStellarBody();
+    // singleAgency();
 }
 
 function home(){
-    const body = document.getElementById('root');
     const home = document.getElementById('nav_home');
 
     home.addEventListener('click', function(){
-        body.innerHTML = Home();
+        apiActions.getRequest(
+            'https://localhost:44388/api/stellarbody',
+            stellarbody => {
+                document.querySelector('#root').innerHTML = Home(stellarbody);
+
+            })
     });
 };
 
-function mission(){
+function missions(){
     const body = document.getElementById('root');
-    const home = document.getElementById('nav_mission');
+    const mission = document.getElementById('nav_mission');
 
-    home.addEventListener('click', function(){
+    mission.addEventListener('click', function(){
         body.innerHTML = Missions();
     });
 };
 
+// function stellarBodies(){
+//     const stellarBody = document.getElementById('nav_stellarBody');
+
+//     stellarBody.addEventListener('click', function(){
+//         apiActions.getRequest(
+//             'https://localhost:44388/api/stellarbody',
+//             stellarbody => {
+//                 document.querySelector('#root').innerHTML = Home(stellarbody);
+//             })
+//     });
+// }
