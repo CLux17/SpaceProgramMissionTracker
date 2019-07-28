@@ -98,7 +98,7 @@ function stellarBodyModal(){
             apiActions.postRequest('https://localhost:44388/api/stellarbody',
             data,
             stellar => {
-                document.querySelector('#root').innerHTML = StellarBodies(stellar);
+                document.querySelector('#root').innerHTML = AddStellarBodyModal(stellar);
             })
         }
     });
