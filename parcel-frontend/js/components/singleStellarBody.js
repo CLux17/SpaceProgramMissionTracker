@@ -1,3 +1,5 @@
+import StellarBodies from "./stellarBodies";
+
 export default function SingleStellarBody(stellarBody){
     return `
     <img src='${stellarBody.imageURL}' alt='${stellarBody.name} image'></img>
@@ -7,10 +9,11 @@ export default function SingleStellarBody(stellarBody){
         <button class='edit-stellarBody'>Edit Stellar Body</button>
         <button class='delete-stellarBody'>Delete Stellar Body</button>
             <section class='edit-box'>
-                <input class='edit-stellarBody_id' type='hidden' value='${stellarBody.stellarBodyId}'>
-                <input class='edit-stellarBody_imageUrl' type='hidden' value='${stellarBody.imageURL}'>
-                <input class='edit-stellarBody_name' type='text' value='${stellarBody.name}'>
-                <textarea class='edit-stellarBody_description'>${stellarBody.description}</textarea>
+                <input class='stellarBody_id' type='hidden' value='${stellarBody.stellarBodyId}'>
+                <input class='stellarBody_name' type='text' value='${stellarBody.name}'>
+                <input class='stellarBody_classification' type='text' value='${stellarBody.classification}'>
+                <textarea class='stellarBody_description'>${stellarBody.description}</textarea>
+                <input class='stellarBody_imageUrl' type='text' value='${stellarBody.imageURL}'>
                 <button class='edit-stellarBody_submit'>Submit</button>
             </section>
     </div>
@@ -42,3 +45,5 @@ export default function SingleStellarBody(stellarBody){
 `;
 
 };
+
+
