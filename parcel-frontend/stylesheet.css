@@ -7,6 +7,7 @@ body{
     background-image: url("images/HomePhoto.jpg");
     background-size: cover;
     padding: 2em;
+    background-attachment: fixed;
 }
 
 #root{    
