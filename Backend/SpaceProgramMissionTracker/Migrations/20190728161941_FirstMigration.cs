@@ -73,7 +73,8 @@ namespace SpaceProgramMissionTracker.Migrations
                 {
                     MissionNumberId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MissionIterationName = table.Column<string>(nullable: true),
+                    MissionIterationNumber = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     MissionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -121,21 +122,21 @@ namespace SpaceProgramMissionTracker.Migrations
                 columns: new[] { "MissionId", "AgencyId", "Description", "ImageURL", "Name", "StellarBodyId" },
                 values: new object[,]
                 {
-                    { 2, 2, null, null, "Venera", 2 },
-                    { 4, 4, null, null, "ISS Resupply", 3 },
-                    { 1, 1, null, null, "Apollo", 10 },
-                    { 3, 3, null, null, "Philae", 11 }
+                    { 2, 2, "The Venera (Russian: Вене́ра, pronounced [vʲɪˈnʲɛrə]) program was the name given to a series of space probes developed by the Soviet Union between 1961 and 1984 to gather information about the planet Venus. Ten probes successfully landed on the surface of the planet, including the two Vega program and Venera-Halley probes, while thirteen probes successfully entered the Venusian atmosphere. Due to the extreme surface conditions on Venus, the probes could only survive for a short period on the surface, with times ranging from 23 minutes to two hours. The Venera program established a number of precedents in human space exploration, among them being the first human-made devices to enter the atmosphere of another planet (Venera 4 on October 18, 1967), the first to make a soft landing on another planet (Venera 7 on December 15, 1970), the first to return images from another planet's surface (Venera 9 on June 8, 1975), and the first to perform high-resolution radar mapping scans.", "", "Venera", 2 },
+                    { 4, 4, "In 2005, NASA solicited proposals for a commercial ISS resupply cargo vehicle to replace the then-soon-to-be-retired Space Shuttle, through its Commercial Orbital Transportation Services (COTS) development program. The Dragon spacecraft was a part of SpaceX's proposal, submitted to NASA in March 2006. SpaceX's COTS proposal was issued as part of a team, which also included MD Robotics, the Canadian company that had built the ISS's Canadarm2.", "https://i.imgur.com/ef2kY1L.jpg", "ISS Resupply", 3 },
+                    { 1, 1, "The Apollo program, also known as Project Apollo, was the third United States human spaceflight program carried out by the National Aeronautics and Space Administration (NASA), which succeeded in landing the first humans on the Moon from 1969 to 1972. First conceived during Dwight D. Eisenhower's administration as a three-person spacecraft to follow the one-person Project Mercury which put the first Americans in space, Apollo was later dedicated to the national goal set by President John F. Kennedy of \"landing a man on the Moon by the end of this decade and returning him safely to the Earth\" in an address to Congress on May 25, 1961. It was the third US human spaceflight program to fly, preceded by the two-person Project Gemini conceived in 1961 to extend spaceflight capability in support of Apollo.", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Apollo_program.svg/800px-Apollo_program.svg.png", "Apollo", 10 },
+                    { 3, 3, "Rosetta was a space probe built by the European Space Agency launched on 2 March 2004. Along with Philae, its lander module, Rosetta performed a detailed study of comet 67P/Churyumov–Gerasimenko (67P). During its journey to the comet, the spacecraft flew three times by Earth, by Mars, and the asteroids 21 Lutetia and 2867 Šteins. It was launched as the third cornerstone mission of the ESA's Horizon 2000 programme", "http://1.bp.blogspot.com/-dt7WFuKvwWk/VFv2aOa1-4I/AAAAAAAAjiA/IyF9vx99Lq0/s1600/600px-Logo_-_Sonde_Rosetta.svg.png", "Rosetta - Philae", 11 }
                 });
 
             migrationBuilder.InsertData(
                 table: "MissionNumbers",
-                columns: new[] { "MissionNumberId", "MissionId", "MissionIterationName" },
+                columns: new[] { "MissionNumberId", "Description", "MissionId", "MissionIterationNumber" },
                 values: new object[,]
                 {
-                    { 2, 2, "1" },
-                    { 4, 4, "1" },
-                    { 1, 1, "1" },
-                    { 3, 3, "1" }
+                    { 2, "", 2, "1" },
+                    { 4, "", 4, "1" },
+                    { 1, "", 1, "1" },
+                    { 3, "", 3, "1" }
                 });
 
             migrationBuilder.CreateIndex(
