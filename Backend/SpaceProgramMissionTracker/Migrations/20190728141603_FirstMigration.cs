@@ -40,7 +40,8 @@ namespace SpaceProgramMissionTracker.Migrations
                     MissionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    AgencyId = table.Column<int>(nullable: false)
+                    AgencyId = table.Column<int>(nullable: false),
+                    StellarBodyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,31 +52,31 @@ namespace SpaceProgramMissionTracker.Migrations
                         principalTable: "Agencies",
                         principalColumn: "AgencyId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AgencyStellarBodies",
-                columns: table => new
-                {
-                    AgencyStellarBodyId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    StellarBodyId = table.Column<int>(nullable: false),
-                    AgencyId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AgencyStellarBodies", x => x.AgencyStellarBodyId);
                     table.ForeignKey(
-                        name: "FK_AgencyStellarBodies_Agencies_AgencyId",
-                        column: x => x.AgencyId,
-                        principalTable: "Agencies",
-                        principalColumn: "AgencyId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AgencyStellarBodies_StellarBodies_StellarBodyId",
+                        name: "FK_Missions_StellarBodies_StellarBodyId",
                         column: x => x.StellarBodyId,
                         principalTable: "StellarBodies",
                         principalColumn: "StellarBodyId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MissionNumbers",
+                columns: table => new
+                {
+                    MissionNumberId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MissionIterationName = table.Column<string>(nullable: true),
+                    MissionId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MissionNumbers", x => x.MissionNumberId);
+                    table.ForeignKey(
+                        name: "FK_MissionNumbers_Missions_MissionId",
+                        column: x => x.MissionId,
+                        principalTable: "Missions",
+                        principalColumn: "MissionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -102,56 +103,56 @@ namespace SpaceProgramMissionTracker.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AgencyStellarBodies",
-                columns: new[] { "AgencyStellarBodyId", "AgencyId", "StellarBodyId" },
+                table: "Missions",
+                columns: new[] { "MissionId", "AgencyId", "Name", "StellarBodyId" },
                 values: new object[,]
                 {
-                    { 1, 1, 1 },
-                    { 2, 2, 2 },
-                    { 3, 3, 3 },
-                    { 4, 4, 4 }
+                    { 1, 1, "Apollo", 1 },
+                    { 2, 2, "Venera", 2 },
+                    { 3, 3, "Philae", 3 },
+                    { 4, 4, "ISS Resupply", 4 }
                 });
 
             migrationBuilder.InsertData(
-                table: "Missions",
-                columns: new[] { "MissionId", "AgencyId", "Name" },
+                table: "MissionNumbers",
+                columns: new[] { "MissionNumberId", "MissionId", "MissionIterationName" },
                 values: new object[,]
                 {
-                    { 1, 1, "Apollo" },
-                    { 2, 2, "Venera" },
-                    { 3, 3, "Philae" },
-                    { 4, 4, "ISS Resupply" }
+                    { 1, 1, "1" },
+                    { 2, 2, "1" },
+                    { 3, 3, "1" },
+                    { 4, 4, "1" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AgencyStellarBodies_AgencyId",
-                table: "AgencyStellarBodies",
-                column: "AgencyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AgencyStellarBodies_StellarBodyId",
-                table: "AgencyStellarBodies",
-                column: "StellarBodyId");
+                name: "IX_MissionNumbers_MissionId",
+                table: "MissionNumbers",
+                column: "MissionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Missions_AgencyId",
                 table: "Missions",
                 column: "AgencyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Missions_StellarBodyId",
+                table: "Missions",
+                column: "StellarBodyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AgencyStellarBodies");
+                name: "MissionNumbers");
 
             migrationBuilder.DropTable(
                 name: "Missions");
 
             migrationBuilder.DropTable(
-                name: "StellarBodies");
+                name: "Agencies");
 
             migrationBuilder.DropTable(
-                name: "Agencies");
+                name: "StellarBodies");
         }
     }
 }

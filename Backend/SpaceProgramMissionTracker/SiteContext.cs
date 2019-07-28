@@ -12,7 +12,8 @@ namespace SpaceProgramMissionTracker
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<StellarBody> StellarBodies { get; set; }
         public DbSet<Mission> Missions { get; set; }
-        public DbSet<AgencyStellarBody> AgencyStellarBodies { get; set; }
+        public DbSet<MissionNumber> MissionNumbers { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -47,34 +48,8 @@ namespace SpaceProgramMissionTracker
                     AgencyId = 4,
                     Name = "SpaceX",
                 }
-                );
-            modelBuilder.Entity<AgencyStellarBody>().HasData(
-                new AgencyStellarBody()
-                {
-                    AgencyStellarBodyId = 1,
-                    AgencyId = 1,
-                    StellarBodyId = 1
-                },
-                new AgencyStellarBody()
-                {
-                    AgencyStellarBodyId = 2,
-                    AgencyId = 2,
-                    StellarBodyId = 2
-                },
-                new AgencyStellarBody()
-                {
-                    AgencyStellarBodyId = 3,
-                    AgencyId = 3,
-                    StellarBodyId = 3
-                },
-                new AgencyStellarBody()
-                {
-                    AgencyStellarBodyId = 4,
-                    AgencyId = 4,
-                    StellarBodyId = 4
-                }
-                );
-
+            );
+            
             modelBuilder.Entity<StellarBody>().HasData(
                 new StellarBody()
                 {
@@ -100,37 +75,65 @@ namespace SpaceProgramMissionTracker
                     Name = "LEO",
                     
                 }
-                );
+            );
 
             modelBuilder.Entity<Mission>().HasData(
                 new Mission()
                 {
                     MissionId = 1,
                     Name = "Apollo",
-                    AgencyId = 1
+                    AgencyId = 1,
+                    StellarBodyId = 1
                 },
                 new Mission()
                 {
                     MissionId = 2,
                     Name = "Venera",
-                    AgencyId = 2
+                    AgencyId = 2,
+                    StellarBodyId = 2
                 },
                 new Mission()
                 {
                     MissionId = 3,
                     Name = "Philae",
-                    AgencyId = 3
+                    AgencyId = 3,
+                    StellarBodyId = 3
                 },
                 new Mission()
                 {
                     MissionId = 4,
                     Name = "ISS Resupply",
-                    AgencyId = 4
+                    AgencyId = 4,
+                    StellarBodyId = 4
                 }
-                );
+            );
 
-
-
+            modelBuilder.Entity<MissionNumber>().HasData(
+                new MissionNumber()
+                {
+                    MissionNumberId = 1,
+                    MissionIterationName = "1",
+                    MissionId = 1
+                },
+                new MissionNumber()
+                {
+                    MissionNumberId = 2,
+                    MissionIterationName = "1",
+                    MissionId = 2
+                },
+                new MissionNumber()
+                {
+                    MissionNumberId = 3,
+                    MissionIterationName = "1",
+                    MissionId = 3
+                },
+                new MissionNumber()
+                {
+                    MissionNumberId = 4,
+                    MissionIterationName = "1",
+                    MissionId = 4
+                }
+            );
         }
     }
 }
