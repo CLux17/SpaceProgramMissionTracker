@@ -38,32 +38,6 @@ namespace SpaceProgramMissionTracker.Migrations
                     );
                 });
 
-            modelBuilder.Entity("SpaceProgramMissionTracker.Model.AgencyStellarBody", b =>
-                {
-                    b.Property<int>("AgencyStellarBodyId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AgencyId");
-
-                    b.Property<int>("StellarBodyId");
-
-                    b.HasKey("AgencyStellarBodyId");
-
-                    b.HasIndex("AgencyId");
-
-                    b.HasIndex("StellarBodyId");
-
-                    b.ToTable("AgencyStellarBodies");
-
-                    b.HasData(
-                        new { AgencyStellarBodyId = 1, AgencyId = 1, StellarBodyId = 1 },
-                        new { AgencyStellarBodyId = 2, AgencyId = 2, StellarBodyId = 2 },
-                        new { AgencyStellarBodyId = 3, AgencyId = 3, StellarBodyId = 3 },
-                        new { AgencyStellarBodyId = 4, AgencyId = 4, StellarBodyId = 4 }
-                    );
-                });
-
             modelBuilder.Entity("SpaceProgramMissionTracker.Model.Mission", b =>
                 {
                     b.Property<int>("MissionId")
@@ -74,17 +48,21 @@ namespace SpaceProgramMissionTracker.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("StellarBodyId");
+
                     b.HasKey("MissionId");
 
                     b.HasIndex("AgencyId");
 
+                    b.HasIndex("StellarBodyId");
+
                     b.ToTable("Missions");
 
                     b.HasData(
-                        new { MissionId = 1, AgencyId = 1, Name = "Apollo" },
-                        new { MissionId = 2, AgencyId = 2, Name = "Venera" },
-                        new { MissionId = 3, AgencyId = 3, Name = "Philae" },
-                        new { MissionId = 4, AgencyId = 4, Name = "ISS Resupply" }
+                        new { MissionId = 1, AgencyId = 1, Name = "Apollo", StellarBodyId = 1 },
+                        new { MissionId = 2, AgencyId = 2, Name = "Venera", StellarBodyId = 2 },
+                        new { MissionId = 3, AgencyId = 3, Name = "Philae", StellarBodyId = 3 },
+                        new { MissionId = 4, AgencyId = 4, Name = "ISS Resupply", StellarBodyId = 4 }
                     );
                 });
 
@@ -108,24 +86,16 @@ namespace SpaceProgramMissionTracker.Migrations
                     );
                 });
 
-            modelBuilder.Entity("SpaceProgramMissionTracker.Model.AgencyStellarBody", b =>
-                {
-                    b.HasOne("SpaceProgramMissionTracker.Model.Agency", "Agency")
-                        .WithMany("AgencyStellarBodyList")
-                        .HasForeignKey("AgencyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SpaceProgramMissionTracker.Model.StellarBody", "StellarBody")
-                        .WithMany("AgencyStellarBodyList")
-                        .HasForeignKey("StellarBodyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("SpaceProgramMissionTracker.Model.Mission", b =>
                 {
                     b.HasOne("SpaceProgramMissionTracker.Model.Agency")
                         .WithMany("Missions")
                         .HasForeignKey("AgencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SpaceProgramMissionTracker.Model.StellarBody")
+                        .WithMany("Missions")
+                        .HasForeignKey("StellarBodyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
