@@ -6,7 +6,7 @@ import StellarBodies from './components/stellarBodies';
 import Agencies from './components/agencies';
 
 // import SingleMission from './components/singleMission';
-// import SingleStellarBody from './components/singleStellarBody';
+import SingleStellarBody from './components/singleStellarBody';
 // import SingleAgency from './components/singleAgency';
 
 import AddStellarBodyModal from './components/add-stellarbody-modal';
