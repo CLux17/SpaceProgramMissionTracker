@@ -57,8 +57,8 @@ nav ul{
     color: black;
 }
 
-.stellar_img{
-    width: 20%;
+.stellar_img, .mission_img{
+    width: 35%;
 }
 
 footer{
