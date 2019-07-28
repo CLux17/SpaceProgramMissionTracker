@@ -3,7 +3,7 @@ import Home from './components/home';
 
 import Missions from './components/missions';
 import StellarBodies from './components/stellarBodies';
-// import Agencies from './components/agencies';
+import Agencies from './components/agencies';
 
 // import SingleMission from './components/singleMission';
 // import SingleStellarBody from './components/singleStellarBody';
@@ -18,11 +18,12 @@ function pageBuild(){
     home();
     missions();
     stellarBodies();
-    // agencies();
+    agencies();
     // singleMission();
     // singleStellarBody();
     // singleAgency();
     stellarBodyModal();
+    myFunction();
 }
 
 function home(){
@@ -35,15 +36,6 @@ function home(){
                 document.querySelector('#root').innerHTML = Home(stellarbody);
 
             })
-    });
-};
-
-function missions(){
-    const body = document.getElementById('root');
-    const mission = document.getElementById('nav_mission');
-
-    mission.addEventListener('click', function(){
-        body.innerHTML = Missions();
     });
 };
 
@@ -74,6 +66,83 @@ function stellarBodies(){
         }
     });
 }
+
+// function myFunction() {
+//     document.getElementById("myDropdown").classList.toggle("show");
+//   }
+  
+//   function filterFunction() {
+//     var input, filter, ul, li, a, i;
+//     input = document.getElementById("myInput");
+//     filter = input.value.toUpperCase();
+//     div = document.getElementById("myDropdown");
+//     a = div.getElementsByTagName("a");
+//     for (i = 0; i < a.length; i++) {
+//       txtValue = a[i].textContent || a[i].innerText;
+//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//         a[i].style.display = "";
+//       } else {
+//         a[i].style.display = "none";
+//       }
+//     }
+//   }
+
+function missions(){
+    const mission = document.getElementById('nav_mission');
+
+    mission.addEventListener('click', function(){
+        apiActions.getRequest(
+            'https://localhost:44388/api/mission',
+            missions => {
+                document.querySelector('#root').innerHTML = Missions(missions);
+            })
+    });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if(event.target.classList.contains('add-mission_submit')){
+            const newmission = event.target.parentElement.querySelector('.add-mission_name').value;
+            const data = {
+                id: 0,
+                name: newmission
+            };
+
+            apiActions.postRequest('https://localhost:44388/api/mission',
+            data,
+            missions => {
+                document.querySelector('#root').innerHTML = Missions(missions);
+            })
+        }
+    });
+}
+
+function agencies(){
+    const agency = document.getElementById('nav_agency');
+
+    agency.addEventListener('click', function(){
+        apiActions.getRequest(
+            'https://localhost:44388/api/agency',
+            agencies => {
+                document.querySelector('#root').innerHTML = Agencies(agencies);
+            })
+    });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if(event.target.classList.contains('add-agency_submit')){
+            const newagency = event.target.parentElement.querySelector('.add-agency_name').value;
+            const data = {
+                id: 0,
+                name: newagency
+            };
+
+            apiActions.postRequest('https://localhost:44388/api/agency',
+            data,
+            agencies => {
+                document.querySelector('#root').innerHTML = Agencies(agencies);
+            })
+        }
+    });
+}
+
 
     
 // function stellarBodyModal(){
