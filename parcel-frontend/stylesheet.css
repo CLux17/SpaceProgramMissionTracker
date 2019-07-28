@@ -104,6 +104,10 @@ h2, img, h4{
     align-items: center;
 }
 
+.edit-box{
+    display: none;
+}
+
 footer{
     position: fixed;
     bottom: 0px;
