@@ -57,6 +57,10 @@ nav ul{
     color: black;
 }
 
+.stellar_img{
+    width: 20%;
+}
+
 footer{
     position: fixed;
     bottom: 0px;

@@ -9,6 +9,8 @@ import StellarBodies from './components/stellarBodies';
 // import SingleStellarBody from './components/singleStellarBody';
 // import SingleAgency from './components/singleAgency';
 
+import AddStellarBodyModal from './components/add-stellarbody-modal';
+
 
 pageBuild();
 
@@ -20,6 +22,7 @@ function pageBuild(){
     // singleMission();
     // singleStellarBody();
     // singleAgency();
+    stellarBodyModal();
 }
 
 function home(){
@@ -54,6 +57,35 @@ function stellarBodies(){
                 document.querySelector('#root').innerHTML = StellarBodies(stellarbody);
             })
     });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if(event.target.classList.contains('add-stellarBody_submit')){
+            const newBody = event.target.parentElement.querySelector('.add-stellarBody_name').value;
+            const data = {
+                id: 0,
+                name: newBody
+            };
+
+            apiActions.postRequest('https://localhost:44388/api/stellarbody',
+            data,
+            stellar => {
+                document.querySelector('#root').innerHTML = StellarBodies(stellar);
+            })
+        }
+    });
+}
+
+    
+function stellarBodyModal(){
+    document.getElementById('root').addEventListener('click', function() {
+        if(event.target.classList.contains('add-stellarBody-modal')){
+            const modal = document.getElementById('boxbg')
+            const modalbox = document.getElementById('box')
+
+            modalbox.innerHTML = AddStellarBodyModal()
+            modal.style.display = 'block'
+        };
+    })
 
     document.getElementById('root').addEventListener('click', function(){
         if(event.target.classList.contains('add-stellarBody_submit')){
