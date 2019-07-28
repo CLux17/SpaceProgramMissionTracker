@@ -4,7 +4,10 @@ export default function StellarBodies(stellarBodies){
     ${stellarBodies.map(stellarBody => {
             return`
             <li>
-                <h4>${stellarBody.name}</h4>
+                <h2>${stellarBody.name}</h2>
+                <h4>${stellarBody.classification}</h4>
+                <h4>${stellarBody.imageURL}</h4>
+                <h4>${stellarBody.description}</h4>
             </li>`
 
         }).join("")}
@@ -14,6 +17,9 @@ export default function StellarBodies(stellarBodies){
                 <input class='add-stellarBody_class' type='text' placeholder='Add Classification...'>
                 <input class='add-stellarBody_img' type='text' placeholder='Add Image...'>
                 <input class='add-stellarBody_descrip' type='text' placeholder='Add Description...'>
+                <button class="add-stellarBody_submit multibutton">Add Stellar Body</button>
+                <input class='stellarBody_Id' type='hidden' value='${stellarBodies.Id}>
+            </section>
         
         `;
 

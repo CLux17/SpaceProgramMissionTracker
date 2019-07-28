@@ -2,7 +2,7 @@ import apiActions from './api/api-action';
 import Home from './components/home';
 
 import Missions from './components/missions';
-//import StellarBodies from './components/stellarBodies';
+import StellarBodies from './components/stellarBodies';
 // import Agencies from './components/agencies';
 
 // import SingleMission from './components/singleMission';
@@ -15,7 +15,7 @@ pageBuild();
 function pageBuild(){
     home();
     missions();
-    //stellarBodies();
+    stellarBodies();
     // agencies();
     // singleMission();
     // singleStellarBody();
@@ -44,14 +44,30 @@ function missions(){
     });
 };
 
-// function stellarBodies(){
-//     const stellarBody = document.getElementById('nav_stellarBody');
+function stellarBodies(){
+    const stellarBody = document.getElementById('nav_stellarBody');
 
-//     stellarBody.addEventListener('click', function(){
-//         apiActions.getRequest(
-//             'https://localhost:44388/api/stellarbody',
-//             stellarbody => {
-//                 document.querySelector('#root').innerHTML = Home(stellarbody);
-//             })
-//     });
-// }
+    stellarBody.addEventListener('click', function(){
+        apiActions.getRequest(
+            'https://localhost:44388/api/stellarbody',
+            stellarbody => {
+                document.querySelector('#root').innerHTML = StellarBodies(stellarbody);
+            })
+    });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if(event.target.classList.contains('add-stellarBody_submit')){
+            const newBody = event.target.parentElement.querySelector('.add-stellarBody_name').value;
+            const data = {
+                id: 0,
+                name: newBody
+            };
+
+            apiActions.postRequest('https://localhost:44388/api/stellarbody',
+            data,
+            stellar => {
+                document.querySelector('#root').innerHTML = StellarBodies(stellar);
+            })
+        }
+    });
+}
