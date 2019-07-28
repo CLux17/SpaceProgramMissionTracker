@@ -23,7 +23,7 @@ function pageBuild(){
     singleStellarBody();
     // singleAgency();
     //stellarBodyModal();
-    myFunction();
+    //myFunction();
 }
 
 function home(){
@@ -76,6 +76,49 @@ function stellarBodies(){
             })
         }
     })
+
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('delete-stellarBody')){
+            const removestellarBody_id = event.target.parentElement.querySelector('.stellarBody_id').value;
+    
+            const data = {
+                StellarBodyId: removestellarBody_id,
+            };
+    
+            apiActions.deleteRequest('https://localhost:44388/api/stellarbody', data, stellarBodies => {
+                    document.querySelector('#root').innerHTML = StellarBodies(stellarBodies);
+                }
+            );
+        }
+    });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('edit-stellarBody')){
+            const editbox = event.target.parentElement.querySelector('.edit-box')
+            editbox.style.display = 'block'
+        }
+        
+        if (event.target.classList.contains('edit-stellarBody_submit')){
+            const editstellarBody_id = event.target.parentElement.querySelector('.stellarBody_id').value;
+            const editstellarBody_name = event.target.parentElement.querySelector('.stellarBody_name').value;
+            const editstellarBody_classification = event.target.parentElement.querySelector('.stellarBody_classification').value;
+            const editstellarBody_description = event.target.parentElement.querySelector('.stellarBody_description').value;
+            const editstellarBody_imageUrl = event.target.parentElement.querySelector('.stellarBody_imageUrl').value;
+            
+            const data = {
+                StellarBodyId: editstellarBody_id,
+                Name: editstellarBody_name,
+                ImageUrl: editstellarBody_imageUrl,
+                Classification: editstellarBody_classification,
+                Description: editstellarBody_description
+            };
+                       
+            apiActions.putRequest('https://localhost:44388/api/stellarbody', data, stellarBodies => {
+                document.querySelector('#root').innerHTML = StellarBodies(stellarBodies);
+                }
+            );
+        }
+    });
 }
 
 // function myFunction() {
