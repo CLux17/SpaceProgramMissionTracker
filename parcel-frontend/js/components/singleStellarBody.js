@@ -27,7 +27,7 @@ export default function SingleStellarBody(stellarBody){
             return `
             <li>
                 <div class='child-image'>
-                <img class='mission_img' src='${mission.imageURL}'></img>
+                <img class='mission_img single' src='${mission.imageURL}'></img>
                 </div>
                 <h4 class='target'>${mission.name}</h4>
                 <input class='mission_id' type='hidden' value='${mission.missionId}'>
