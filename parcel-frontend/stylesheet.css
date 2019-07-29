@@ -16,8 +16,7 @@ body{
     color: black;
     width: 65vw;
     margin: 5em auto;
-    opacity: .83;
-    background-color: rgb(167, 187, 207);
+    background-color: rgb(167, 187, 207, .83);
     min-height: 300px;
 }
 
@@ -58,51 +57,45 @@ nav ul{
     color: black;
 }
 
-.stellar_img, .mission_img{
+.stellar_img, .mission_img, .agency_img{
     width: 35%;
 }
 
-.stellar_img:hover, .mission_img:hover{
+.stellar_img:hover, .mission_img:hover, .agency_img:hover{
     transform: scale(.9);
     box-shadow: 5px 5px 15px rgb(76, 41, 122);
     opacity: 1;
 }
 
-.single{
+.single:hover{
     box-shadow: none;
     transform: none;
 }
 
+img{
+    margin: .8em;
+}
+
 .multibutton{
-    background-color: rgb(76, 41, 122);
+    background-color: rgb(72, 47, 105);
     color: white;
     padding: .6em;
-    opacity: none;
 }
 
 .multibutton:hover{
-    opacity: 1;
+    background-color: rgb(30, 8, 82);
 }
 
 .list li{
-    padding: .75em;
+    padding: 2em;
     text-decoration: none;
     list-style: none;
 }
 
-
-h2{
-    text-decoration: none;
-    text-shadow: aliceblue;
-    text-size-adjust: 25px;
+h4{
+    padding-bottom: 1.25em;
 }
 
-h2, img, h4{
-    display: inline-block;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
 
 .edit-box{
     display: none;
