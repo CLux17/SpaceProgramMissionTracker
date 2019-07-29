@@ -112,8 +112,11 @@ function stellarBodies(){
                 Classification: editstellarBody_classification,
                 Description: editstellarBody_description
             };
-                       
+            console.log("just a test")           
             apiActions.putRequest('https://localhost:44388/api/stellarbody', data, stellarBodies => {
+                console.log("just a test2")    
+            document.querySelector('#root').innerHTML = "";
+                boxbg.style.display = 'none';
                 document.querySelector('#root').innerHTML = StellarBodies(stellarBodies);
                 }
             );
@@ -239,7 +242,7 @@ function agencies(){
             const removeagency_id = event.target.parentElement.querySelector('.agency_id').value;
     
             const data = {
-                StellarBodyId: removeagency_id,
+                AgencyId: removeagency_id,
             };
     
             apiActions.deleteRequest('https://localhost:44388/api/agency', data, agencies => {
