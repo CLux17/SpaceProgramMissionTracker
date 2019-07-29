@@ -222,19 +222,23 @@ function missions(){
             const editmission_name = event.target.parentElement.querySelector('.mission_name').value;
             const editmission_description = event.target.parentElement.querySelector('.mission_description').value;
             const editmission_imageUrl = event.target.parentElement.querySelector('.mission_imageUrl').value;
-            
+            const editmissionagency_id = event.target.parentElement.querySelector('.agency_id').value;
+            const editmissionstellarbody_id = event.target.parentElement.querySelector('.stellarbody_id').value;
+
             const data = {
                 missionId: editmission_id,
                 Name: editmission_name,
                 ImageUrl: editmission_imageUrl,
-                Description: editmission_description
+                Description: editmission_description,
+                AgencyId: editmissionagency_id,
+                StellarBodyId: editmissionstellarbody_id
             };
-            console.log("just a test")           
-            apiActions.putRequest('https://localhost:44388/api/mission', data, missions => {
-                console.log("just a test2")    
+            console.log(editmissionagency_id)
+            console.log(editmissionstellarbody_id)
+            apiActions.putRequest('https://localhost:44388/api/mission', data, mission => {
             document.querySelector('#root').innerHTML = "";
                 boxbg.style.display = 'none';
-                document.querySelector('#root').innerHTML = Missions(missions);
+                document.querySelector('#root').innerHTML = Missions(mission);
                 }
             );
         }

@@ -4,11 +4,10 @@ export default function Missions(missions){
     ${missions.map(mission => {
             return`
             <li>
-                <h2>${mission.name}</h2>
+                <h2 class='mission_name' >${mission.name}</h2>
                 <input class='mission_id' type='hidden' value='${mission.missionId}'>
                 <img class='mission_img' src='${mission.imageURL}' alt='${mission.name} image'/>
-                <h4>${mission.description}</h4>
-                <input class='mission_id' type='hidden' value='${mission.missionId}'>
+                <h4 class='mission_description' >${mission.description}</h4>
             </li>`
 
         }).join("")}
@@ -23,7 +22,7 @@ export default function Missions(missions){
                 <select id="select">
                 <option value="{mission.agencyId}"{mission.name}</option>
             <select id="select">
-                <option value="${missions[0].agencyId}">name</option>
+                <option value="${missions[1].agencyId}">name</option>
             </select> </div>       
                 <button class="add-mission_submit multibutton">Add Mission</button>
         

@@ -9,6 +9,8 @@ export default function SingleMission(singleMission){
         <button class='delete-mission multibutton'>Delete Mission</button>
             <section class='edit-box'>
                 <input class='mission_id' type='hidden' value='${singleMission.missionId}'>
+                <input class='agency_id' type='Hidden' value='${singleMission.agencyId}'>
+                <input class='stellarbody_id' type='Hidden' value='${singleMission.stellarBodyId}'>
                 <input class='mission_name' type='text' value='${singleMission.name}'>
                 <textarea class='mission_description'>${singleMission.description}</textarea>
                 <input class='mission_imageUrl' type='text' value='${singleMission.imageURL}'>
