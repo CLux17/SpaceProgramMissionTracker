@@ -112,8 +112,11 @@ function stellarBodies(){
                 Classification: editstellarBody_classification,
                 Description: editstellarBody_description
             };
-                       
+            console.log("just a test")           
             apiActions.putRequest('https://localhost:44388/api/stellarbody', data, stellarBodies => {
+                console.log("just a test2")    
+            document.querySelector('#root').innerHTML = "";
+                boxbg.style.display = 'none';
                 document.querySelector('#root').innerHTML = StellarBodies(stellarBodies);
                 }
             );
