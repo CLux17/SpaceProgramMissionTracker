@@ -52,10 +52,16 @@ function stellarBodies(){
 
     document.getElementById('root').addEventListener('click', function(){
         if(event.target.classList.contains('add-stellarBody_submit')){
-            const newBody = event.target.parentElement.querySelector('.add-stellarBody_name').value;
+            const newBodyName = event.target.parentElement.querySelector('.add-stellarBody_name').value;
+            const newBodyClass = event.target.parentElement.querySelector('.add-stellarBody_class').value;
+            const newBodyDescrip = event.target.parentElement.querySelector('.add-stellarBody_descrip').value;
+            const newBodyImage = event.target.parentElement.querySelector('.add-stellarBody_img').value;
             const data = {
-                id: 0,
-                name: newBody
+                StellarBodyId: 0,
+                Name: newBodyName,
+                Classification: newBodyClass,
+                Description: newBodyDescrip,
+                ImageUrl: newBodyImage
             };
 
             apiActions.postRequest('https://localhost:44388/api/stellarbody',
@@ -157,10 +163,18 @@ function missions(){
 
     document.getElementById('root').addEventListener('click', function(){
         if(event.target.classList.contains('add-mission_submit')){
-            const newmission = event.target.parentElement.querySelector('.add-mission_name').value;
-            const data = {
-                id: 0,
-                name: newmission
+            const newMissionName = event.target.parentElement.querySelector('.add-mission_name').value;
+             const newMissionDescrip = event.target.parentElement.querySelector('.add-mission_descrip').value;
+             const newMissionImg = event.target.parentElement.querySelector('.add-mission_img').value;
+            
+             const data = {
+                MissionId: 0,
+                Name: newMissionName,
+                Description: newMissionDescrip,
+                ImageURL: newMissionImg,
+                AgencyId: 1,
+                StellarBodyId: 1,
+
             };
 
             apiActions.postRequest('https://localhost:44388/api/mission',
@@ -197,6 +211,37 @@ function missions(){
         }
     });
 
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('edit-mission')){
+            const editbox = event.target.parentElement.querySelector('.edit-box')
+            editbox.style.display = 'block'
+        }
+        
+        if (event.target.classList.contains('edit-mission_submit')){
+            const editmission_id = event.target.parentElement.querySelector('.mission_id').value;
+            const editmission_name = event.target.parentElement.querySelector('.mission_name').value;
+            const editmission_classification = event.target.parentElement.querySelector('.mission_classification').value;
+            const editmission_description = event.target.parentElement.querySelector('.mission_description').value;
+            const editmission_imageUrl = event.target.parentElement.querySelector('.mission_imageUrl').value;
+            
+            const data = {
+                MissionId: editmission_id,
+                Name: editmission_name,
+                ImageUrl: editmission_imageUrl,
+                Classification: editmission_classification,
+                Description: editmission_description
+            };
+            console.log("just a test")           
+            apiActions.putRequest('https://localhost:44388/api/mission', data, missions => {
+                console.log("just a test2")    
+            document.querySelector('#root').innerHTML = "";
+                boxbg.style.display = 'none';
+                document.querySelector('#root').innerHTML = Missions(missions);
+                }
+            );
+        }
+    });
+
 }
 
 function agencies(){
@@ -212,10 +257,15 @@ function agencies(){
 
     document.getElementById('root').addEventListener('click', function(){
         if(event.target.classList.contains('add-agency_submit')){
-            const newagency = event.target.parentElement.querySelector('.add-agency_name').value;
+            const newAgencyName = event.target.parentElement.querySelector('.add-agency_name').value;
+            const newAgencyDescrip = event.target.parentElement.querySelector('.add-agency_descrip').value;
+            const newAgencyImage = event.target.parentElement.querySelector('.add-agency_img').value;
+            
             const data = {
-                id: 0,
-                name: newagency
+                AgencyId: 0,
+                Name: newAgencyName,
+                Description:newAgencyDescrip,
+                ImageUrl: newAgencyImage
             };
 
             apiActions.postRequest('https://localhost:44388/api/agency',

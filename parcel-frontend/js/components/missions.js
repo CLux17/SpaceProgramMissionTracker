@@ -5,6 +5,7 @@ export default function Missions(missions){
             return`
             <li>
                 <h2>${mission.name}</h2>
+                <input class='mission_id' type='hidden' value='${mission.missionId}'>
                 <img class='mission_img' src='${mission.imageURL}' alt='${mission.name} image'/>
                 <h4>${mission.description}</h4>
             </li>`
@@ -16,7 +17,7 @@ export default function Missions(missions){
                 <input class='add-mission_img' type='text' placeholder='Add Image...'>
                 <input class='add-mission_descrip' type='text' placeholder='Add Description...'>
                 <div>
-                <select id="select">
+            <select id="select">
                 <option value="${missions[0].agencyId}">name</option>
             </select> </div>       
                 <button class="add-mission_submit multibutton">Add Mission</button>

@@ -12,6 +12,7 @@ export default function Agencies(agencies){
 
         }).join("")}
         </ul>
+        
             <section class='add-agency'>
                 <input class='add-agency_name' type='text' placeholder='Add Agency name...'>
                 <input class='add-agency_img' type='text' placeholder='Add Image...'>
