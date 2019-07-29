@@ -12,17 +12,23 @@ export default function Missions(missions){
 
         }).join("")}
         </ul>
+        ${missions.map(mission =>{
+            return `
             <section class='add-mission'>
                 <input class='add-mission_name' type='text' placeholder='Add Mission name...'>
                 <input class='add-mission_img' type='text' placeholder='Add Image...'>
                 <input class='add-mission_descrip' type='text' placeholder='Add Description...'>
                 <div>
+                <select id="select">
+                <option value="{mission.agencyId}"{mission.name}</option>
             <select id="select">
                 <option value="${missions[1].agencyId}">name</option>
             </select> </div>       
                 <button class="add-mission_submit multibutton">Add Mission</button>
         
         
-                <input class='mission_Id' type='hidden' value='${missions.Id}>
+                <input class='mission_Id' type='hidden' value='${mission.Id}>
+            `
+        }).join("")}
             `
 };

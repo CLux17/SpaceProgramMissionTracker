@@ -226,7 +226,7 @@ function missions(){
             const editmissionstellarbody_id = event.target.parentElement.querySelector('.stellarbody_id').value;
 
             const data = {
-                MissionId: editmission_id,
+                missionId: editmission_id,
                 Name: editmission_name,
                 ImageUrl: editmission_imageUrl,
                 Description: editmission_description,
@@ -245,6 +245,7 @@ function missions(){
     });
 
 }
+
 
 function agencies(){
     const agency = document.getElementById('nav_agency');
