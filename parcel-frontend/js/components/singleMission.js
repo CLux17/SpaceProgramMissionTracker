@@ -12,6 +12,9 @@ export default function SingleMission(singleMission){
                 <input class='mission_name' type='text' value='${singleMission.name}'>
                 <textarea class='mission_description'>${singleMission.description}</textarea>
                 <input class='mission_imageUrl' type='text' value='${singleMission.imageURL}'>
+                <input class='agency_id' type='hidden' value='${singleMission.agencyId}'>
+                <input class='stellarBody_id' type='hidden' value='${singleMission.stellarBodyId}'>
+
                 <button class='edit-mission_submit multibutton'>Submit</button>
             </section>
     </div>

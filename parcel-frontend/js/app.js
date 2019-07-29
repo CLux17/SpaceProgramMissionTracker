@@ -197,7 +197,37 @@ function missions(){
         }
     });
 
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('edit-mission')){
+            const editbox = event.target.parentElement.querySelector('.edit-box')
+            editbox.style.display = 'block'
+        }
+        
+        if (event.target.classList.contains('edit-mission_submit')){
+            const editmission_id = event.target.parentElement.querySelector('.mission_id').value;
+            const editmission_name = event.target.parentElement.querySelector('.mission_name').value;
+            const editmission_description = event.target.parentElement.querySelector('.mission_description').value;
+            const editmission_imageUrl = event.target.parentElement.querySelector('.mission_imageUrl').value;
+            
+            const data = {
+                missionId: editmission_id,
+                Name: editmission_name,
+                ImageUrl: editmission_imageUrl,
+                Description: editmission_description
+            };
+            console.log("just a test")           
+            apiActions.putRequest('https://localhost:44388/api/mission', data, missions => {
+                console.log("just a test2")    
+            document.querySelector('#root').innerHTML = "";
+                boxbg.style.display = 'none';
+                document.querySelector('#root').innerHTML = StellarBodies(missions);
+                }
+            );
+        }
+    });
+
 }
+
 
 function agencies(){
     const agency = document.getElementById('nav_agency');
