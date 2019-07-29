@@ -239,7 +239,7 @@ function agencies(){
             const removeagency_id = event.target.parentElement.querySelector('.agency_id').value;
     
             const data = {
-                StellarBodyId: removeagency_id,
+                AgencyId: removeagency_id,
             };
     
             apiActions.deleteRequest('https://localhost:44388/api/agency', data, agencies => {
@@ -249,7 +249,31 @@ function agencies(){
         }
     });
 
-
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('edit-agency')){
+            const editbox = event.target.parentElement.querySelector('.edit-box')
+            editbox.style.display = 'block'
+        }
+        
+        if (event.target.classList.contains('agency_submit')){
+            const editagency_id = event.target.parentElement.querySelector('.agency_id').value;
+            const editagency_name = event.target.parentElement.querySelector('.agency_name').value;
+            const editagency_description = event.target.parentElement.querySelector('.agency_description').value;
+            const editagency_imageUrl = event.target.parentElement.querySelector('.agency_imageUrl').value;
+            
+            const data = {
+                agencyId: editagency_id,
+                Name: editagency_name,
+                ImageUrl: editagency_imageUrl,
+                Description: editagency_description
+            };
+                       
+            apiActions.putRequest('https://localhost:44388/api/agency', data, agencies => {
+                document.querySelector('#root').innerHTML = Agencies(agencies);
+                }
+            );
+        }
+    });
 }
 
 // function stellarBodyModal(){
