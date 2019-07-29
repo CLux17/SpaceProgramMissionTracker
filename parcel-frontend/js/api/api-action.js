@@ -30,17 +30,22 @@ function getRequest(location, callback){
  
  function putRequest(location, requestBody, callback){
     console.log("trying to fetch");
-    fetch(location,{
+    fetch(location, {
         method: "PUT",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify
+        (requestBody),
+        headers: {
+            "Content-Type" : 
+            "application/json"
+        }
     })
-    .then(returned => console.log("after fetch: " + returned))
     .then(response => response.json())
-    .then(res => console.log("after json conversion: " + res))
     .then(jsonData => callback(jsonData))
     .catch(err => console.log(err));
  }
+//  .then(returned => console.log("after fetch: " + returned))
+//     .then(res => console.log("after json conversion: " + res))
+    
  
  export default{
     getRequest,

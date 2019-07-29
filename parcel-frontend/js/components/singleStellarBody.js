@@ -2,9 +2,9 @@ import StellarBodies from "./stellarBodies";
 
 export default function SingleStellarBody(stellarBody){
     return `
+    <div id='name-info'><h2>${stellarBody.name}</h2>
     <img class='stellar_img single' src='${stellarBody.imageURL}' alt='${stellarBody.name} image'></img>
     
-    <div id='name-info'><h3>${stellarBody.name}</h3>
     <div id='button-box'>
         <button class='edit-stellarBody multibutton'>Edit Stellar Body</button>
         <button class='delete-stellarBody multibutton'>Delete Stellar Body</button>
@@ -22,12 +22,12 @@ export default function SingleStellarBody(stellarBody){
     <div id='main-children'>
     <h3>Missions</h3>
     
-    <ul id='mission-list'>
+    <ul class="list" id='mission-list'>
         ${stellarBody.missions.map(mission => {
             return `
             <li>
                 <div class='child-image'>
-                <img src='${mission.imageURL}'></img>
+                <img class='mission_img' src='${mission.imageURL}'></img>
                 </div>
                 <h4 class='target'>${mission.name}</h4>
                 <input class='mission_id' type='hidden' value='${mission.missionId}'>

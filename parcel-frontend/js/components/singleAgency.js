@@ -1,8 +1,8 @@
 export default function SingleAgency(agency){
     return `
+    <div id='agency-name'><h2>${agency.name}</h2>
     <img class='agency_img single' src='${agency.imageURL}' alt='${agency.name} image'></img>
     
-    <div id='agency-name'><h3>${agency.name}</h3>
     <div id='button-box'>
         <button class='edit-agency multibutton'>Edit Agency</button>
         <button class='delete-agency multibutton'>Delete Agency</button>
@@ -19,12 +19,12 @@ export default function SingleAgency(agency){
     <div id='main-children'>
     <h3>Missions</h3>
 
-    <ul id='mission-list'>
+    <ul class='list' id='mission-list'>
         ${agency.missions.map(mission => {
             return `
                 <li>
                     <div class='child-image'>
-                    <img src='${mission.imageURL}'></img>
+                    <img class='mission_img' src='${mission.imageURL}'></img>
                     </div>
                     <h4 class='target'>${mission.name}</h4>
                     <input class='mission_id' type='hidden' value='${mission.missionId}'>
