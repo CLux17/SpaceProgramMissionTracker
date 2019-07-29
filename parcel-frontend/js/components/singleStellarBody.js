@@ -21,8 +21,7 @@ export default function SingleStellarBody(stellarBody){
     </div>
     <div id='main-children'>
     <h3>Missions</h3>
-
-    <button class='add-mission-modal multibutton'>Add mission</button>
+    
     <ul id='mission-list'>
         ${stellarBody.missions.map(mission => {
             return `
