@@ -195,6 +195,18 @@ function agencies(){
             })
         }
     });
+
+    document.getElementById('root').addEventListener('click', function(){
+        if (event.target.classList.contains('agency_name')){
+            const agencyId = event.target.parentElement.querySelector('.agency_id').value
+            console.log(agencyId)
+            apiActions.getRequest('https://localhost:44388/api/agency/' + agencyId, 
+            agency => {
+                document.querySelector('#root').innerHTML = SingleAgency(agency)
+            })
+        }
+    })
+
 }
 
 function singleStellarBody(){
