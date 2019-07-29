@@ -164,7 +164,7 @@ namespace SpaceProgramMissionTracker
                     MissionId = 2,
                     Name = "Venera",
                     Description = "The Venera (Russian: Вене́ра, pronounced [vʲɪˈnʲɛrə]) program was the name given to a series of space probes developed by the Soviet Union between 1961 and 1984 to gather information about the planet Venus. Ten probes successfully landed on the surface of the planet, including the two Vega program and Venera-Halley probes, while thirteen probes successfully entered the Venusian atmosphere. Due to the extreme surface conditions on Venus, the probes could only survive for a short period on the surface, with times ranging from 23 minutes to two hours. The Venera program established a number of precedents in human space exploration, among them being the first human-made devices to enter the atmosphere of another planet (Venera 4 on October 18, 1967), the first to make a soft landing on another planet (Venera 7 on December 15, 1970), the first to return images from another planet's surface (Venera 9 on June 8, 1975), and the first to perform high-resolution radar mapping scans.",
-                    ImageURL = "",
+                    ImageURL = "https://cosmos-magazine.imgix.net/file/spina/photo/10451/170517_Venera_7_Assembly.jpg?fit=clip&w=835",
                     AgencyId = 2,
                     StellarBodyId = 2
                 },
