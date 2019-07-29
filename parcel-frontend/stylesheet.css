@@ -7,6 +7,7 @@ body{
     background-image: url("images/HomePhoto.jpg");
     background-size: cover;
     padding: 2em;
+    background-attachment: fixed;
 }
 
 #root{    
@@ -15,8 +16,7 @@ body{
     color: black;
     width: 65vw;
     margin: 5em auto;
-    opacity: .83;
-    background-color: rgb(167, 187, 207);
+    background-color: rgb(167, 187, 207, .83);
     min-height: 300px;
 }
 
@@ -55,6 +55,54 @@ nav ul{
 .navbutton:hover{
     background-color: rgb(167, 187, 207);
     color: black;
+}
+
+.stellar_img, .mission_img, .agency_img{
+    width: 35%;
+}
+
+.stellar_img:hover, .mission_img:hover, .agency_img:hover{
+    transform: scale(.95);
+    box-shadow: 5px 5px 15px rgb(76, 41, 122);
+    opacity: 1;
+}
+
+.single{
+    width: 50%;
+}
+
+.single:hover{
+    box-shadow: none;
+    transform: none;
+}
+
+img{
+    margin: .8em;
+}
+
+.multibutton{
+    background-color: rgb(72, 47, 105);
+    color: white;
+    padding: .6em;
+}
+
+.multibutton:hover{
+    background-color: rgb(30, 8, 82);
+}
+
+.list li{
+    padding: 2em;
+    text-decoration: none;
+    list-style: none;
+}
+
+h4{
+    padding-bottom: 1.25em;
+}
+
+
+.edit-box{
+    display: none;
 }
 
 footer{
