@@ -62,9 +62,13 @@ nav ul{
 }
 
 .stellar_img:hover, .mission_img:hover, .agency_img:hover{
-    transform: scale(.9);
+    transform: scale(.95);
     box-shadow: 5px 5px 15px rgb(76, 41, 122);
     opacity: 1;
+}
+
+.single{
+    width: 50%;
 }
 
 .single:hover{
