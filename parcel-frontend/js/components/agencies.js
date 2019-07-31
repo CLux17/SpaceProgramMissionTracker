@@ -4,9 +4,9 @@ export default function Agencies(agencies){
     ${agencies.map(agency => {
             return`
             <li class="topGroup">
-                <h2 class='agency_name'>${agency.name}</h2>
+                <h2 class='agency_name'>${agency.agencyName}</h2>
                 <input class='agency_id' type='hidden' value='${agency.agencyId}'>
-                <img class='agency_img' src='${agency.imageURL}' alt='${agency.name} image'/>
+                <img class='agency_img' src='${agency.imageURL}' alt='${agency.agencyName} image'/>
                 <h4>${agency.description}</h4>
             </li>`
 

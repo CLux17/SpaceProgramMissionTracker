@@ -5,7 +5,15 @@ function getRequest(location, callback){
      .then(jsonData => callback(jsonData))
      .catch(err => console.log(err))
  }
- 
+
+ function getMissionRequest(location){
+    console.log(location)
+    fetch(location)   
+     .then(response => response.json())
+     .then(res => console.log(res))
+     .catch(err => console.log(err))
+ }
+
  function postRequest(location, requestBody, callback){
     fetch(location,{
         method: "POST",
@@ -51,5 +59,6 @@ function getRequest(location, callback){
     getRequest,
     postRequest,
     deleteRequest,
-    putRequest
+    putRequest,
+    getMissionRequest
  }

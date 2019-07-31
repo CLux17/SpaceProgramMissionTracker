@@ -1,13 +1,15 @@
-export default function Missions(missions){
+export default function Missions(missions, agencies, stellarBodies){
+    console.log(stellarBodies)
+    console.log(agencies)
     return`
     <ul class='list' id="mission-list">
-    ${missions.map(mission => {
+    ${missions.map(man => {
             return`
             <li>
-                <h2 class='mission_name' >${mission.name}</h2>
-                <input class='mission_id' type='hidden' value='${mission.missionId}'>
-                <img class='mission_img' src='${mission.imageURL}' alt='${mission.name} image'/>
-                <h4 class='mission_description' >${mission.description}</h4>
+                <h2 class='mission_name' >${man.missionName}</h2>
+                <input class='mission_id' type='hidden' value='${man.missionId}'>
+                <img class='mission_img' src='${man.imageURL}' alt='${man.missionName} image'/>
+                <h4 class='mission_description' >${man.description}</h4>
             </li>`
 
         }).join("")}
@@ -17,9 +19,24 @@ export default function Missions(missions){
                 <input class='add-mission_img' type='text' placeholder='Add Image...'>
                 <input class='add-mission_descrip' type='text' placeholder='Add Description...'>
                 <div>
-            <select id="select">
-                <option value="${missions[1].agencyId}">name</option>
-            </select> </div>       
+                <select id="select">
+                ${agencies.map(agencylist =>{
+                    return `
+                            <option value="${agencylist.AgencyId}">Hi</option>
+                            `
+                        })}
+                </select>
+                </div>
+                <div>
+                <select id="selecttwo">
+                ${stellarBodies.map(bodylist =>{
+                    return `
+                            <option value="${bodylist.StellarBodyId}">Bods</option>
+                            `
+                        })}
+                </select>
+
+                 </div>       
                 <button class="add-mission_submit multibutton">Add Mission</button>
             `
 };
