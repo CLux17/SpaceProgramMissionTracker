@@ -152,21 +152,8 @@ function stellarBodies(){
 
 function missions(){
     const mission = document.getElementById('nav_mission');
-    // const arrayone; 
-    // const arraytwo;
-    // const arraythree;
-
     mission.addEventListener('click', function(){
-        const arrayone = apiActions.getMissionRequest(
-            'https://localhost:44388/api/mission'
-           );
-        const arraytwo = apiActions.getMissionRequest(
-           'https://localhost:44388/api/agency'
-           );
-        const arraythree = apiActions.getMissionRequest(
-           'https://localhost:44388/api/stellarBody'
-           );
-            document.querySelector('#root').innerHTML = Missions(arrayone, arraytwo, arraythree)
+        Missions();
     });
 
     
@@ -175,22 +162,23 @@ function missions(){
             const newMissionName = event.target.parentElement.querySelector('.add-mission_name').value;
              const newMissionDescrip = event.target.parentElement.querySelector('.add-mission_descrip').value;
              const newMissionImg = event.target.parentElement.querySelector('.add-mission_img').value;
+             const newAgencyId = event.target.parentElement.querySelector('#agency-select').value;
+             const newStellarBodyId = event.target.parentElement.querySelector('#stellar-bodies-select').value;
             
              const data = {
                 MissionId: 0,
-                Name: newMissionName,
+                MissionName: newMissionName,
                 Description: newMissionDescrip,
                 ImageURL: newMissionImg,
-                AgencyId: 1,
-                StellarBodyId: 1,
-
+                AgencyId: newAgencyId,
+                StellarBodyId: newStellarBodyId,
             };
-
             apiActions.postRequest('https://localhost:44388/api/mission',
             data,
             missions => {
                 document.querySelector('#root').innerHTML = Missions(missions);
-            })
+        })
+            
         }
     });
 
