@@ -8,7 +8,7 @@ namespace SpaceProgramMissionTracker.Model
     public class StellarBody
     {
         public int StellarBodyId { get; set; }
-        public string Name { get; set; }
+        public string StellarBodyName { get; set; }
         public string Classification { get; set; }
         public string Description { get; set; }
         public string ImageURL { get; set; }
